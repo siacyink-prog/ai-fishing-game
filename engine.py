@@ -675,7 +675,7 @@ for _f in FISH.values():
 BAITS = {
     "basic_worm": {"id": "basic_worm", "name": "普通蚯蚓", "cost": 10, "description": "最朴素的蚯蚓，没有任何特殊效果，胜在便宜。", "effects": {}},
     "glow_bait": {"id": "glow_bait", "name": "夜光饵", "cost": 35, "description": "在黑暗中散发幽幽蓝光，对夜行性鱼类格外有吸引力。", "effects": {"rarity_weight_mult": {"rare": 1.5, "epic": 1.3}, "tag_weight_mult": {"nocturnal": 2.0}, "junk_chance_mult": 0.8}},
-    "golden_lure": {"id": "golden_lure", "name": "黄金亮片", "cost": 80, "description": "华丽的金色旋转亮片，全稀有度的鱼都更容易上钩。", "effects": {"rarity_weight_mult": {"rare": 1.4, "epic": 1.6, "legendary": 2.0, "mythic": 2.0}, "junk_chance_mult": 0.7}},
+    "golden_lure": {"id": "golden_lure", "name": "黄金亮片", "cost": 80, "description": "华丽的金色旋转亮片，专挑大货：压住普通小鱼的咬口、把机会让给稀有及以上的稀客，还更少缠上杂物。（这片水域有稀有鱼时才划算）", "effects": {"rarity_weight_mult": {"common": 0.5, "uncommon": 0.8, "rare": 1.4, "epic": 1.6, "legendary": 2.0, "mythic": 2.0}, "junk_chance_mult": 0.7}},
 }
 # 氧气瓶：潜水消耗品，一瓶 = 潜一次（一次捕获）。在 shop 买、用 dive 下水（不耗鱼饵）。
 OXYGEN = {"id": "oxygen", "name": "氧气瓶", "cost": 45, "description": "一瓶压缩氧气，够你潜下去捕一次。带几瓶就能连潜几次——水下有些只能潜水才遇得到的鱼。"}
