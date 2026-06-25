@@ -678,7 +678,9 @@ BAITS = {
 OXYGEN = {"id": "oxygen", "name": "氧气瓶", "cost": 45, "description": "一瓶压缩氧气，够你潜下去捕一次。带几瓶就能连潜几次——水下有些只能潜水才遇得到的鱼。"}
 # 特殊事件 / 物品：留空 = 不触发（填了内容自动激活）
 EVENTS = json.loads(r"""{"drift_bottle":{"id":"drift_bottle","name":"漂流瓶","type":"bottle","weight":145,"unique":true,"description":"一只随波而来的玻璃瓶撞上你的浮标——瓶里卷着一张陌生人写的纸条。","messages":["（致捞到这只瓶子的人：今天也辛苦啦，愿你下一竿就是大鱼。——一个把烦恼塞进瓶子扔进海里的人）","（瓶子里只有一句话：如果你读到这里，说明海把它送对了人。祝你好运。）","（一张被海水泡得发皱的纸条，上面画着一条歪歪扭扭的鱼，旁边写着：我钓了一整天，只钓到这只瓶子。哈。）","（恭喜你捞到一只空瓶——里面什么都没有，连张纸条都没有。就当大海跟你打了个招呼吧。）","（纸条上是一行陌生的字：愿你所求皆有回响，愿你所钓皆有惊喜。落款是一个谁也认不出的签名。）","（瓶里卷着半角旧海图，海岸线早被水泡得模糊，只有一处被红笔圈住，写着「这片海的鱼最好钓」——可惜没人知道是哪片海。）"],"rewards":{}},"floating_coral_pearl":{"id":"floating_coral_pearl","name":"漂来的珊瑚珠","type":"treasure","weight":18,"description":"浪尖上托着一颗粉红的珍珠，随着波光上下起浮，像一朵珊瑚花。","rewards":{"items":[{"id":"coral_pearl","qty":1}]}},"ambergris_chunk":{"id":"ambergris_chunk","name":"浮香的龙涎","type":"treasure","weight":10,"description":"一块灰白的蜡状物漂浮过来，空气里忽然漫开一股奇异的幽香。","rewards":{"items":[{"id":"ambergris","qty":1}]}},"rusty_chest":{"id":"rusty_chest","name":"锈迹宝箱","type":"chest","weight":25,"description":"一只包着铁皮的旧木箱浮出水面，铁锁布满红锈，但依然坚固。","lock":{"or_points":80},"loot_table":[{"weight":60,"reward":{"points_range":[100,200]}},{"weight":15,"reward":{"items":[{"id":"ancient_key","qty":1}]}},{"weight":15,"reward":{"items":[{"id":"gem_sapphire","qty":1}]}},{"weight":5,"reward":{"bait":[{"id":"golden_lure","qty":1}]}},{"weight":5,"reward":{"items":[{"id":"shipwreck_coin","qty":1}]}}]},"barnacle_chest":{"id":"barnacle_chest","name":"藤壶密箱","type":"chest","weight":20,"description":"一只被藤壶层层包裹的石箱，盖子上刻着古老的漩涡纹，没有锁孔，却紧密得几乎撬不开。","lock":{"or_points":60},"loot_table":[{"weight":50,"reward":{"points_range":[80,180]}},{"weight":30,"reward":{"items":[{"id":"moonstone","qty":1}]}},{"weight":20,"reward":{"bait":[{"id":"glow_bait","qty":3}]}}]},"ancient_captain_chest":{"id":"ancient_captain_chest","name":"船长遗箱","type":"chest","weight":8,"description":"一只雕着海怪缠锚图案的暗铜宝箱，从深水缓缓升起，海水从锁孔里汩汩流出。","lock":{"requires_item":"ancient_key","or_points":200},"loot_table":[{"weight":40,"reward":{"points_range":[150,300]}},{"weight":35,"reward":{"items":[{"id":"moonstone","qty":1},{"id":"gem_sapphire","qty":1}]}},{"weight":25,"reward":{"bait":[{"id":"golden_lure","qty":2}]}}]}}""")
-ITEMS = json.loads(r"""{"coral_pearl":{"id":"coral_pearl","name":"珊瑚珍珠","type":"treasure","description":"粉红色的珍珠，带着珊瑚的温润光泽，仿佛刚从人鱼的王冠上摘下。","value":150,"sellable":true},"gem_sapphire":{"id":"gem_sapphire","name":"蓝宝石","type":"treasure","description":"深海般的蓝色，里面封存着浪涛的纹路，轻晃时仿佛有潮声。","value":300,"sellable":true},"moonstone":{"id":"moonstone","name":"月光石","type":"treasure","description":"乳白色的石头上流转着月华般的光晕，传说月光凝结而成。","value":450,"sellable":true},"ambergris":{"id":"ambergris","name":"龙涎香","type":"treasure","description":"传说中的鲸之宝，散发着奇异幽香，正是香料商人梦寐以求的至宝。","value":500,"sellable":true},"shipwreck_coin":{"id":"shipwreck_coin","name":"沉船金币","type":"treasure","description":"一枚古老的金币，正面刻着模糊的王冠，背面是早已沉没的船名。","value":200,"sellable":true},"ancient_key":{"id":"ancient_key","name":"古老的钥匙","type":"key","description":"一把沉重的黄铜钥匙，尾端雕着海怪缠锚的图案，握在手里仿佛能听见远航的号角。","value":0,"sellable":false}}""")
+ITEMS = json.loads(r"""{"coral_pearl":{"id":"coral_pearl","name":"珊瑚珍珠","type":"treasure","description":"粉红色的珍珠，带着珊瑚的温润光泽，仿佛刚从人鱼的王冠上摘下。","value":150,"sellable":true},"gem_sapphire":{"id":"gem_sapphire","name":"蓝宝石","type":"treasure","description":"深海般的蓝色，里面封存着浪涛的纹路，轻晃时仿佛有潮声。","value":300,"sellable":true},"moonstone":{"id":"moonstone","name":"月光石","type":"treasure","description":"乳白色的石头上流转着月华般的光晕，传说月光凝结而成。","value":450,"sellable":true},"ambergris":{"id":"ambergris","name":"龙涎香","type":"treasure","description":"传说中的鲸之宝，散发着奇异幽香，正是香料商人梦寐以求的至宝。","value":500,"sellable":true},"shipwreck_coin":{"id":"shipwreck_coin","name":"沉船金币","type":"treasure","description":"一枚古老的金币，正面刻着模糊的王冠，背面是早已沉没的船名。","value":200,"sellable":true},"coral_crown":{"id":"coral_crown","name":"珊瑚王冠","type":"treasure","description":"由活珊瑚天然生长成的冠冕，枝桠间还缀着细小的珍珠，传说是某位人鱼公主的旧物。","value":280,"sellable":true},"mermaid_tear":{"id":"mermaid_tear","name":"人鱼之泪","type":"treasure","description":"一滴永不干涸的人鱼眼泪，凝成晶莹的水蓝色宝珠，贴近耳边能听见极轻的呜咽。","value":420,"sellable":true},"ancient_relic":{"id":"ancient_relic","name":"远古遗物","type":"treasure","description":"一块刻满失传符文的金属残片，来自沉入水底的古文明，握着它仿佛触到了某段被淹没的历史。","value":340,"sellable":true},"ancient_key":{"id":"ancient_key","name":"古老的钥匙","type":"key","description":"一把沉重的黄铜钥匙，尾端雕着海怪缠锚的图案，握在手里仿佛能听见远航的号角。","value":0,"sellable":false}}""")
+# 水下专属宝箱（不进水面事件池，靠潜水幸运事件 seafloor_vault 投放；open 时和 EVENTS 一并查表）。
+DIVE_EVENTS = json.loads(r"""{"seafloor_vault":{"id":"seafloor_vault","name":"海底宝库","type":"chest","description":"嵌在海床裂缝里的一只覆满贝壳与珊瑚的青铜箱，锁早已锈死，缝里却渗出珠光。","lock":{"or_points":120},"loot_table":[{"weight":35,"reward":{"points_range":[180,350]}},{"weight":22,"reward":{"items":[{"id":"mermaid_tear","qty":1}]}},{"weight":20,"reward":{"items":[{"id":"coral_crown","qty":1},{"id":"coral_pearl","qty":1}]}},{"weight":13,"reward":{"oxygen":5}},{"weight":10,"reward":{"items":[{"id":"ancient_relic","qty":1},{"id":"gem_sapphire","qty":1}]}}]}}""")
 
 _SAVE = os.path.join(os.path.dirname(os.path.abspath(__file__)) if "__file__" in globals() else ".", "fishing_save.json")
 _IO_WARN = ""   # 存档读/写出问题时的一次性提示；cmd() 会把它贴在输出末尾，不再静默吞掉
@@ -788,6 +790,8 @@ def _grant_rewards(rng, rw):
         S["bait_inventory"][b["id"]] = S["bait_inventory"].get(b["id"], 0) + b["qty"]; parts.append("%s×%d" % (BAITS.get(b["id"], {}).get("name", b["id"]), b["qty"]))
     for it in rw.get("items", []):
         S["items"][it["id"]] = S["items"].get(it["id"], 0) + it["qty"]; parts.append("%s×%d" % (ITEMS.get(it["id"], {}).get("name", it["id"]), it["qty"]))
+    if rw.get("oxygen"):
+        S["oxygen"] = S.get("oxygen", 0) + rw["oxygen"]; S["oxygen_ever"] = True; parts.append("氧气瓶×%d" % rw["oxygen"])
     return parts
 def _letter_exhausted(e):
     return bool(e.get("unique")) and len(S["seen_letters"].get(e["id"], [])) >= len(e.get("messages", []))
@@ -816,7 +820,8 @@ def _resolve_event(rng):
 def _c_open(uid):
     idx = next((i for i, c in enumerate(S["pending_chests"]) if c["chest_uid"] == uid), -1)
     if idx < 0: return "没有这个待开的宝箱：%s。（inventory 里看待开宝箱）" % uid
-    ev = EVENTS.get(S["pending_chests"][idx]["event_id"])
+    eid = S["pending_chests"][idx]["event_id"]
+    ev = EVENTS.get(eid) or DIVE_EVENTS.get(eid)   # 水面宝箱 + 水下宝库一并查
     if not ev:
         S["pending_chests"].pop(idx); return "宝箱 %s 数据缺失，已丢弃。" % uid
     rng = _Rng(S["rngState"], S["rngCalls"])
@@ -875,15 +880,18 @@ def _c_status():
     return "【状态】%s\n鱼饵：%s%s\n未卖渔获：%d 条 ｜ 总抛竿 %d%s" % (_footer(), baits, air, len(S["catch_inventory"]), S["stats"]["total_casts"], extra)
 def _c_shop():
     lines = ["%s　%s　%d点　%s" % (b["id"], b["name"], b["cost"], ("（有偏好加成，见 look）" if (b["effects"].get("tag_weight_mult") or b["effects"].get("rarity_weight_mult")) else "无特殊效果")) for b in BAITS.values()]
-    lines.append("%s　%s　%d点　%s" % (OXYGEN["id"], OXYGEN["name"], OXYGEN["cost"], "潜水捕鱼用（一瓶潜一次，dive 下水）"))
+    lines.append("%s　%s　%d点　%s" % (OXYGEN["id"], OXYGEN["name"], OXYGEN["cost"], "潜水用（一瓶潜一次，dive 下水）｜套餐：买 5 瓶 8 折、10 瓶 7 折"))
     return "【商店】（buy <id> [数量]）\n" + "\n".join(lines) + \
         "\n老板搓了搓手：「好饵能让这片水里本来就有的鱼更肯上钩、更容易出稀有货——可它变不出新鱼种。想钓没见过的鱼，得换个水域、换个季节去寻。」\n「想要水下那些上不了岸的稀客？买几瓶氧气，dive 潜下去。」"
 def _c_buy(bait_id, qty):
     if bait_id in ("oxygen", "oxygen_tank", "氧气瓶"):   # 氧气瓶：潜水消耗品，单独库存
-        qty = max(1, int(qty)); cost = OXYGEN["cost"] * qty
-        if S["points"] < cost: return "点数不够：%s×%d 需 %d 点，你只有 %d。" % (OXYGEN["name"], qty, cost, S["points"])
+        qty = max(1, int(qty))
+        disc = 0.7 if qty >= 10 else (0.8 if qty >= 5 else 1.0)   # 套餐：≥5 瓶 8 折、≥10 瓶 7 折
+        base = OXYGEN["cost"] * qty; cost = int(round(base * disc))
+        if S["points"] < cost: return "点数不够：%s×%d 需 %d 点%s，你只有 %d。" % (OXYGEN["name"], qty, cost, "（已含套餐折扣）" if disc < 1.0 else "", S["points"])
         S["points"] -= cost; S["oxygen"] = S.get("oxygen", 0) + qty; S["oxygen_ever"] = True
-        return "买了 %s×%d，花 %d 点。剩 %d 点，现有氧气瓶×%d。（用 dive 潜水）" % (OXYGEN["name"], qty, cost, S["points"], S["oxygen"])
+        saved = "，套餐省 %d 点" % (base - cost) if disc < 1.0 else ""
+        return "买了 %s×%d，花 %d 点%s。剩 %d 点，现有氧气瓶×%d。（用 dive 潜水）" % (OXYGEN["name"], qty, cost, saved, S["points"], S["oxygen"])
     b = BAITS.get(bait_id)
     if not b: return "没有这种鱼饵：%s。用 shop 看货架。" % bait_id
     qty = max(1, int(qty)); cost = b["cost"] * qty
@@ -1063,9 +1071,17 @@ _LUCK_EVENTS = [
     {"id": "tide_record", "weight": 8},
     {"id": "lucky_pearl", "weight": 8},
 ]
-def _roll_luck(rng, pool, bait_id, f, size, inst):
+# 水下专属幸运事件：只在潜水时进入抽取池（撞见水下奇观、捡珍宝/宝库）
+_DIVE_LUCK_EVENTS = [
+    {"id": "coral_palace", "weight": 10},
+    {"id": "mermaid_palace", "weight": 6},
+    {"id": "ancient_ruins", "weight": 8},
+    {"id": "seafloor_vault", "weight": 6},
+]
+_PEARL_TREASURES = ["coral_pearl", "gem_sapphire", "moonstone", "ambergris", "shipwreck_coin"]   # 蚌中生珠固定池（新水下遗物不进，保持水面一致）
+def _roll_luck(rng, pool, bait_id, f, size, inst, mode="cast"):
     if rng.random() >= LUCK_CHANCE: return "", None
-    eid = _pick_by_weight(rng, _LUCK_EVENTS)["id"]
+    eid = _pick_by_weight(rng, _LUCK_EVENTS + (_DIVE_LUCK_EVENTS if mode == "dive" else []))["id"]
     if eid == "split_hook":   # 鱼钩一分为三：再钓上两条
         weights = [_eff_weight(g, S["location_id"], S["season_id"], bait_id) for g in pool]
         got = []
@@ -1095,10 +1111,27 @@ def _roll_luck(rng, pool, bait_id, f, size, inst):
         c["size"] = rs; c["value"] = rv
         return "🌊📏 千载难逢的涨潮！这条猛涨到极限 %s%s，价值 %d 点。" % (rs, f["size_unit"], rv), eid
     if eid == "lucky_pearl":   # 鱼肚里掏出一枚随机财宝
-        treasures = [k for k, v in ITEMS.items() if v.get("sellable")]
-        tk = treasures[rng.rint(0, len(treasures) - 1)]
+        tk = _PEARL_TREASURES[rng.rint(0, len(_PEARL_TREASURES) - 1)]
         S["items"][tk] = S["items"].get(tk, 0) + 1
         return "🦪✨ 蚌中生珠！鱼肚里滚出一枚%s（可 sell item %s）。" % (ITEMS[tk]["name"], tk), eid
+    # ── 水下专属：撞见水下奇观，捡珍宝 / 古遗物 / 海底宝库 ──
+    if eid == "coral_palace":
+        tk = _pick_by_weight(rng, [{"id": "coral_pearl", "weight": 3}, {"id": "coral_crown", "weight": 1}])["id"]
+        S["items"][tk] = S["items"].get(tk, 0) + 1
+        return "🪸 你撞见一座由活珊瑚长成的水下宫殿，从摇曳的枝桠间拾得一枚%s（sell item %s 可卖）。" % (ITEMS[tk]["name"], tk), eid
+    if eid == "mermaid_palace":
+        tk = _pick_by_weight(rng, [{"id": "mermaid_tear", "weight": 2}, {"id": "moonstone", "weight": 2}, {"id": "ambergris", "weight": 1}])["id"]
+        S["items"][tk] = S["items"].get(tk, 0) + 1
+        return "🧜‍♀️🏰 一队人鱼把你引进她们的珍珠宫殿，临别赠你一件珍宝：%s（sell item %s 可卖）。" % (ITEMS[tk]["name"], tk), eid
+    if eid == "ancient_ruins":
+        S["items"]["ancient_relic"] = S["items"].get("ancient_relic", 0) + 1
+        p = rng.rint(40, 120); S["points"] += p
+        return "🏛️ 你潜入一片古文明的水下遗迹，断碑残柱间掘出一件远古遗物，还摸到散落的 %d 点金币。" % p, eid
+    if eid == "seafloor_vault":
+        S["stats"]["total_chests"] = S["stats"].get("total_chests", 0) + 1
+        cuid = "ch_%03d" % S["stats"]["total_chests"]
+        S["pending_chests"].append({"chest_uid": cuid, "event_id": "seafloor_vault"})
+        return "🧰 海床裂缝里嵌着一只覆满贝壳的海底宝库（%s）。（用 open %s 打开）" % (cuid, cuid), eid
     return "", None
 
 _DIVE_JUNK = ["一截缠满水草的烂绳", "半扇生满藤壶的空贝壳", "一块硌手的礁石", "一只空了的海螺", "一团黏糊糊的水绵"]
@@ -1158,7 +1191,7 @@ def _cast_step(rng, bait_id, mode="cast"):
         fever_line = "\n🔥 热潮翻倍：又得一条 %s%s（%s）" % (f["name"], "★新" if dfirst else "", di)
     bite = (_DIVE_BITE[rng.rint(0, len(_DIVE_BITE) - 1)]) if dive else _bite_line(rng, f["rarity"])
     bonus_line = ("\n🎉 图鉴新发现！首次收录奖励 +%d 点" % bonus) if bonus else ""
-    luck_line, luck_id = _roll_luck(rng, pool, bait_id, f, size, inst)   # 小概率幸运事件
+    luck_line, luck_id = _roll_luck(rng, pool, bait_id, f, size, inst, mode)   # 小概率幸运事件（潜水多一组水下专属）
     luck_seg = ("\n" + luck_line) if luck_line else ""
     secret = "" if dive else _secret_hint()
     return {"text": season_msg + "%s\n%s%s%s%s\n%s%s%s" % (bite, _format_catch(f, size, value, inst, first), bonus_line, fever_line, luck_seg, _footer(), _ambience(loc, rng), secret),
