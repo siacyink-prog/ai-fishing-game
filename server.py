@@ -2,6 +2,8 @@
 import os
 import engine
 from mcp.server.fastmcp import FastMCP
+from starlette.routing import Route
+from starlette.responses import PlainTextResponse
 
 mcp = FastMCP(
     "fish",
@@ -37,5 +39,19 @@ def new_game(seed: int = 0) -> str:
     return engine.new_game(seed)
 
 
+# --- 健康检查：让 Zeabur 知道服务活着 ---
+def _health(request):
+    return PlainTextResponse("ok")
+
+app = mcp.streamable_http_app()
+app.routes.insert(0, Route("/", _health))
+app.routes.insert(0, Route("/health", _health))
+
+
 if __name__ == "__main__":
-    mcp.run(transport="streamable-http")
+    import uvicorn
+    uvicorn.run(
+        app,
+        host="0.0.0.0",
+        port=int(os.environ.get("PORT", 8080)),
+    )
