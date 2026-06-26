@@ -1700,8 +1700,9 @@ def _gain_fragment(loc_id):
     return "\n🧩 还捞上来一块【%s】的藏宝图碎片！（%d/%d，集齐可解锁这里的潜水点）" % (name, fr[loc_id], need)
 
 # ── 幸运随机事件：成功钓到鱼后小概率触发，立即生效或给后续几竿挂 buff ──
-LUCK_CHANCE = 0.05          # 每条成功渔获后触发幸运事件的概率
-FULL_DEX_RUIN_BOOST = 3     # 全图鉴后大遗迹(branch)权重×倍：没新鱼可发现了，残局转向探遗迹
+LUCK_CHANCE = 0.05          # 每条成功渔获后触发幸运事件的概率（水面：分裂鱼钩等；水下：小奇遇）
+RUIN_CHANCE = 0.03          # 潜水时「大遗迹」独立触发概率——各掷各的，不跟幸运事件抢额度
+FULL_DEX_RUIN_BOOST = 3     # 全图鉴后大遗迹概率×倍：没新鱼可发现了，残局转向探遗迹
 _FEVER_CASTS = 3            # 渔获热潮持续竿数
 _FREE_BAIT_CASTS = 3       # 河神祝福免饵竿数
 _LUCK_EVENTS = [
@@ -1720,11 +1721,16 @@ def _resolve_dive_encounter(rng, enc):
     body = ("\n🎁 获得 " + "、".join(parts)) if parts else ""
     return "%s ✨【%s】%s%s" % (enc.get("emoji", "🌊"), enc["name"], enc["text"], body)
 def _roll_luck(rng, pool, bait_id, f, size, inst, mode="cast"):
-    if rng.random() >= LUCK_CHANCE: return "", None
-    # 潜水只出水下奇遇/大遗迹，不复用水面幸运事件（分裂鱼钩/河神祝福等在水下出戏、还会凭空生成鱼饵）
+    # 潜水：先单独判「大遗迹」——它有自己的概率，跟下面的幸运事件互不影响（不再共用一个 5% 名额）
     if mode == "dive":
         _full = len(S["encyclopedia"]) >= len(FISH)   # 全图鉴后，大遗迹更常出（残局玩法）
-        events = [{"id": e["id"], "weight": e["weight"] * (FULL_DEX_RUIN_BOOST if (_full and e.get("branch")) else 1)} for e in DIVE_ENCOUNTERS]
+        if rng.random() < RUIN_CHANCE * (FULL_DEX_RUIN_BOOST if _full else 1):
+            ruins = [{"id": e["id"], "weight": e["weight"]} for e in DIVE_ENCOUNTERS if e.get("branch")]
+            return "", _pick_by_weight(rng, ruins)["id"]   # 大遗迹：不在此结算，交给远征循环暂停做抉择
+    if rng.random() >= LUCK_CHANCE: return "", None
+    # 潜水只出水下「小奇遇」(珊瑚宫/古遗迹等，大遗迹已在上面单独判过)；水面用陆上幸运事件（分裂鱼钩/河神祝福等）
+    if mode == "dive":
+        events = [{"id": e["id"], "weight": e["weight"]} for e in DIVE_ENCOUNTERS if not e.get("branch")]
     else:
         events = _LUCK_EVENTS
     eid = _pick_by_weight(rng, events)["id"]
